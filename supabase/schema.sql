@@ -21,3 +21,23 @@ CREATE POLICY "Allow full access for anon" ON members
     TO anon
     USING (true)
     WITH CHECK (true);
+
+-- Create the perks table
+CREATE TABLE IF NOT EXISTS perks (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    partner_name TEXT NOT NULL,
+    category TEXT NOT NULL,
+    discount TEXT NOT NULL,
+    description TEXT NOT NULL,
+    conditions TEXT NOT NULL,
+    image_url TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+ALTER TABLE perks ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow full access for anon on perks" ON perks
+    FOR ALL
+    TO anon
+    USING (true)
+    WITH CHECK (true);

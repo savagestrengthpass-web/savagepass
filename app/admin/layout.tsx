@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
-import { LogOut, Users, Home } from 'lucide-react';
+import { LogOut, Users, Home, Tag } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -58,6 +58,24 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             >
               <Users size={14} />
               Members
+            </Link>
+            <Link
+              href="/admin/perks"
+              style={{
+                padding: '6px 14px',
+                borderRadius: '6px',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                color: pathname.startsWith('/admin/perks') ? 'var(--accent)' : 'var(--muted)',
+                background: pathname.startsWith('/admin/perks') ? 'rgba(233, 255, 0, 0.08)' : 'transparent',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                transition: 'all 0.2s'
+              }}
+            >
+              <Tag size={14} />
+              Perks
             </Link>
             <Link
               href="/"

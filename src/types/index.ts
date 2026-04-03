@@ -11,3 +11,14 @@ export interface Member {
 }
 
 export type NewMember = Omit<Member, 'id' | 'created_at' | 'date_joined'>;
+
+export interface Perk {
+  id: string;
+  partner_name: string;
+  category: string;
+  discount: string;
+  description: string;
+  conditions: string;
+  image_url: string | null;
+  created_at: string;
+}
