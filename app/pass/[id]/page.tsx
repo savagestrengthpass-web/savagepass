@@ -52,8 +52,8 @@ export default function DigitalPass() {
     return (
       <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center' }}>
         <ShieldAlert size={64} color="var(--error)" style={{ marginBottom: '1rem' }} />
-        <h2 className="heading">Pass Not Found</h2>
-        <p style={{ color: 'var(--muted)', marginTop: '0.5rem' }}>The requested membership card does not exist or has been removed.</p>
+        <h2 className="heading">Pase no Encontrado</h2>
+        <p style={{ color: 'var(--muted)', marginTop: '0.5rem' }}>La tarjeta de membresía solicitada no existe o ha sido eliminada.</p>
       </div>
     );
   }
@@ -122,7 +122,7 @@ export default function DigitalPass() {
         }}>
           <div>
             <h1 style={{ fontSize: '1.5rem', fontWeight: 900, fontFamily: 'var(--font-heading)', margin: 0, lineHeight: 1 }}>SAVAGE</h1>
-            <p style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.8 }}>Strength Pass</p>
+            <p style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.8 }}>Pass</p>
           </div>
           <div style={{ 
             padding: '4px 12px', 
@@ -147,7 +147,7 @@ export default function DigitalPass() {
             >
               {member.member_name}
             </motion.h2>
-            <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginTop: '0.25rem' }}>Member ID: {member.member_id}</p>
+            <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginTop: '0.25rem' }}>ID de Miembro: {member.member_id}</p>
           </div>
 
           {/* QR Code Container */}
@@ -179,7 +179,7 @@ export default function DigitalPass() {
                 backdropFilter: 'blur(4px)'
               }}>
                 <ShieldAlert size={48} />
-                <span style={{ fontWeight: 900, marginTop: '0.5rem', textTransform: 'uppercase' }}>Inactive</span>
+                <span style={{ fontWeight: 900, marginTop: '0.5rem', textTransform: 'uppercase' }}>Inactivo</span>
               </div>
             )}
           </div>
@@ -187,14 +187,14 @@ export default function DigitalPass() {
           <div style={{ width: '100%', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div className="glass" style={{ padding: '1rem', borderRadius: '12px', textAlign: 'center' }}>
               <Calendar size={16} style={{ color: 'var(--accent)', marginBottom: '0.5rem' }} />
-              <span style={{ display: 'block', fontSize: '0.65rem', color: 'var(--muted)', textTransform: 'uppercase' }}>Joined Since</span>
+              <span style={{ display: 'block', fontSize: '0.65rem', color: 'var(--muted)', textTransform: 'uppercase' }}>Miembro desde</span>
               <span style={{ fontWeight: 700 }}>{new Date(member.date_joined).getFullYear()}</span>
             </div>
             <div className="glass" style={{ padding: '1rem', borderRadius: '12px', textAlign: 'center' }}>
               <ShieldCheck size={16} style={{ color: member.is_active ? 'var(--success)' : 'var(--error)', marginBottom: '0.5rem' }} />
-              <span style={{ display: 'block', fontSize: '0.65rem', color: 'var(--muted)', textTransform: 'uppercase' }}>Status</span>
+              <span style={{ display: 'block', fontSize: '0.65rem', color: 'var(--muted)', textTransform: 'uppercase' }}>Estado</span>
               <span style={{ fontWeight: 700, color: member.is_active ? 'var(--success)' : 'var(--error)' }}>
-                {member.is_active ? 'ACTIVE' : 'INACTIVE'}
+                {member.is_active ? 'ACTIVO' : 'INACTIVO'}
               </span>
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function DigitalPass() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <CreditCard size={18} color="var(--muted)" />
-              <span style={{ fontSize: '0.85rem' }}>Digital Membership</span>
+              <span style={{ fontSize: '0.85rem' }}>Membresía Digital</span>
             </div>
             <ChevronRight size={18} color="var(--muted)" />
           </div>
@@ -221,7 +221,7 @@ export default function DigitalPass() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Tag size={18} color="var(--accent)" />
-              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent)' }}>View Perks & Discounts</span>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent)' }}>Ver Beneficios y Descuentos</span>
             </div>
             <ChevronRight size={18} color="var(--accent)" />
           </Link>
@@ -234,7 +234,7 @@ export default function DigitalPass() {
         transition={{ delay: 1 }}
         style={{ marginTop: '2rem', color: 'var(--muted)', fontSize: '0.8rem', textAlign: 'center', maxWidth: '280px' }}
       >
-        Please show this pass to the staff when entering the gym.
+        Por favor, muestra este pase al personal al ingresar al gimnasio.
       </motion.p>
     </div>
   );

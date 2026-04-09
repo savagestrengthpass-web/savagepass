@@ -52,12 +52,12 @@ export default function AdminDashboard() {
     <div className="admin-container" style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
-          <h1 className="heading" style={{ fontSize: '2rem', color: 'var(--accent)' }}>Admin Dashboard</h1>
-          <p style={{ color: 'var(--muted)' }}>Manage Savage Strength members and their passes.</p>
+          <h1 className="heading" style={{ fontSize: '2rem', color: 'var(--accent)' }}>Panel de Administración</h1>
+          <p style={{ color: 'var(--muted)' }}>Administra a los miembros de Savage Strength y sus pases.</p>
         </div>
         <Link href="/admin/new" className="btn-primary">
           <Plus size={20} />
-          New Member
+          Nuevo Miembro
         </Link>
       </header>
 
@@ -66,7 +66,7 @@ export default function AdminDashboard() {
           <Search size={20} style={{ position: 'absolute', left: '12px', color: 'var(--muted)' }} />
           <input 
             type="text" 
-            placeholder="Search by name or ID..." 
+            placeholder="Buscar por nombre o ID..." 
             className="input-field"
             style={{ paddingLeft: '40px' }}
             value={searchTerm}
@@ -79,21 +79,21 @@ export default function AdminDashboard() {
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
             <tr style={{ borderBottom: '1px solid var(--card-border)', background: 'rgba(255,255,255,0.02)' }}>
-              <th style={{ padding: '1rem' }}>Member</th>
+              <th style={{ padding: '1rem' }}>Miembro</th>
               <th style={{ padding: '1rem' }}>ID</th>
-              <th style={{ padding: '1rem' }}>Joined</th>
-              <th style={{ padding: '1rem' }}>Status</th>
-              <th style={{ padding: '1rem' }}>Actions</th>
+              <th style={{ padding: '1rem' }}>Unido</th>
+              <th style={{ padding: '1rem' }}>Estado</th>
+              <th style={{ padding: '1rem' }}>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={5} style={{ padding: '3rem', textAlign: 'center', color: 'var(--muted)' }}>Loading members...</td>
+                <td colSpan={5} style={{ padding: '3rem', textAlign: 'center', color: 'var(--muted)' }}>Cargando miembros...</td>
               </tr>
             ) : filteredMembers.length === 0 ? (
               <tr>
-                <td colSpan={5} style={{ padding: '3rem', textAlign: 'center', color: 'var(--muted)' }}>No members found.</td>
+                <td colSpan={5} style={{ padding: '3rem', textAlign: 'center', color: 'var(--muted)' }}>No se encontraron miembros.</td>
               </tr>
             ) : (
               filteredMembers.map((member) => (
@@ -136,16 +136,16 @@ export default function AdminDashboard() {
                       }}
                     >
                       {member.is_active ? <CheckCircle size={16} /> : <XCircle size={16} />}
-                      {member.is_active ? 'Active' : 'Inactive'}
+                      {member.is_active ? 'Activo' : 'Inactivo'}
                     </button>
                   </td>
                   <td style={{ padding: '1rem' }}>
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <Link href={`/pass/${member.id}`} className="btn-secondary" style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-                        View Pass
+                        Ver Pase
                       </Link>
                       <Link href={`/admin/${member.id}/edit`} className="btn-secondary" style={{ padding: '6px 12px', fontSize: '0.8rem' }}>
-                        Edit
+                        Editar
                       </Link>
                     </div>
                   </td>

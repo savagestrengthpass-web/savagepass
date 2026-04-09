@@ -42,7 +42,7 @@ export default function NewPerk() {
 
     if (error) {
       console.error('Upload error:', error);
-      alert('Image upload failed. Make sure the "perk-images" storage bucket exists in Supabase.');
+      alert(`Carga de imagen fallida: ${error.message}`);
       setImagePreview(null);
     } else {
       const { data: urlData } = supabase.storage.from('perk-images').getPublicUrl(data.path);
@@ -68,7 +68,7 @@ export default function NewPerk() {
 
     if (error) {
       console.error('Error creating perk:', error.message);
-      alert(`Error creating perk: ${error.message}`);
+      alert(`Error al crear el beneficio: ${error.message}`);
     } else {
       router.push('/admin/perks');
       router.refresh();
@@ -76,23 +76,23 @@ export default function NewPerk() {
     setLoading(false);
   }
 
-  const categoryOptions = ['Restaurant', 'Supplements', 'Healthy Food', 'Sportswear', 'Wellness', 'Grooming', 'Entertainment', 'Other'];
+  const categoryOptions = ['Restaurante', 'Suplementos', 'Comida Saludable', 'Ropa Deportiva', 'Bienestar', 'Cuidado Personal', 'Entretenimiento', 'Otro'];
 
   return (
     <div className="admin-container" style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
       <header style={{ marginBottom: '2rem' }}>
         <Link href="/admin/perks" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--muted)', marginBottom: '1rem' }}>
           <ArrowLeft size={16} />
-          Back to Perks
+          Volver a Beneficios
         </Link>
-        <h1 className="heading" style={{ fontSize: '2rem' }}>Add New Perk</h1>
+        <h1 className="heading" style={{ fontSize: '2rem' }}>Agregar Nuevo Beneficio</h1>
       </header>
 
       <form onSubmit={handleSubmit} className="glass-dark" style={{ padding: '2rem', borderRadius: '12px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
 
         {/* Image Upload */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Partner Image</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Imagen del Socio</label>
           {imagePreview ? (
             <div style={{ position: 'relative', width: '100%', height: '160px', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--card-border)' }}>
               <Image src={imagePreview} alt="Preview" fill style={{ objectFit: 'cover' }} />
@@ -129,7 +129,7 @@ export default function NewPerk() {
                   fontWeight: 700,
                   fontSize: '0.9rem',
                 }}>
-                  Uploading...
+                  Subiendo...
                 </div>
               )}
             </div>
@@ -156,8 +156,8 @@ export default function NewPerk() {
               }}
             >
               <Upload size={24} />
-              Click to upload an image
-              <span style={{ fontSize: '0.7rem', opacity: 0.6 }}>PNG, JPG up to 5MB</span>
+              Haz clic para subir una imagen
+              <span style={{ fontSize: '0.7rem', opacity: 0.6 }}>PNG, JPG hasta 5MB</span>
             </button>
           )}
           <input
@@ -171,13 +171,13 @@ export default function NewPerk() {
 
         {/* Partner Name */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Partner Name</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Nombre del Socio</label>
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <Store size={18} style={{ position: 'absolute', left: '12px', color: 'var(--muted)' }} />
             <input
               required
               type="text"
-              placeholder="e.g. Iron Grill Steakhouse"
+              placeholder="ej. Iron Grill Steakhouse"
               className="input-field"
               style={{ paddingLeft: '40px' }}
               value={formData.partner_name}
@@ -188,7 +188,7 @@ export default function NewPerk() {
 
         {/* Category */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Category</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Categoría</label>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {categoryOptions.map((cat) => (
               <button
@@ -214,7 +214,7 @@ export default function NewPerk() {
           </div>
           <input
             type="text"
-            placeholder="Or type a custom category..."
+            placeholder="O escribe una categoría personalizada..."
             className="input-field"
             style={{ marginTop: '0.5rem' }}
             value={categoryOptions.includes(formData.category) ? '' : formData.category}
@@ -224,13 +224,13 @@ export default function NewPerk() {
 
         {/* Discount */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Discount</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Descuento</label>
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <Percent size={18} style={{ position: 'absolute', left: '12px', color: 'var(--muted)' }} />
             <input
               required
               type="text"
-              placeholder="e.g. 15% OFF"
+              placeholder="ej. 15% DE DESCUENTO"
               className="input-field"
               style={{ paddingLeft: '40px' }}
               value={formData.discount}
@@ -241,10 +241,10 @@ export default function NewPerk() {
 
         {/* Description */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Description</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Descripción</label>
           <textarea
             required
-            placeholder="Describe what's included in this perk..."
+            placeholder="Describe qué se incluye en este beneficio..."
             className="input-field"
             style={{ minHeight: '80px', resize: 'vertical' }}
             value={formData.description}
@@ -254,13 +254,13 @@ export default function NewPerk() {
 
         {/* Conditions */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Conditions</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Condiciones</label>
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <AlertCircle size={18} style={{ position: 'absolute', left: '12px', color: 'var(--muted)' }} />
             <input
               required
               type="text"
-              placeholder="e.g. Dine-in only. Show your active Savage Pass."
+              placeholder="ej. Solo consumo en el lugar. Muestra tu Savage Pass activo."
               className="input-field"
               style={{ paddingLeft: '40px' }}
               value={formData.conditions}
@@ -276,7 +276,7 @@ export default function NewPerk() {
           style={{ marginTop: '1rem', width: '100%', height: '50px' }}
         >
           <Save size={20} />
-          {loading ? 'Creating...' : 'Create Perk'}
+          {loading ? 'Creando...' : 'Crear Beneficio'}
         </button>
       </form>
     </div>

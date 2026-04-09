@@ -32,12 +32,12 @@ export default function AdminPerks() {
   }
 
   async function deletePerk(id: string, name: string) {
-    if (!confirm(`Delete perk "${name}"? This cannot be undone.`)) return;
+    if (!confirm(`¿Eliminar beneficio "${name}"? Esta acción no se puede deshacer.`)) return;
 
     const { error } = await supabase.from('perks').delete().eq('id', id);
     if (error) {
       console.error('Error deleting perk:', error);
-      alert('Error deleting perk.');
+      alert('Error al eliminar el beneficio.');
     } else {
       fetchPerks();
     }
@@ -52,12 +52,12 @@ export default function AdminPerks() {
     <div className="admin-container" style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <div>
-          <h1 className="heading" style={{ fontSize: '2rem', color: 'var(--accent)' }}>Perks & Discounts</h1>
-          <p style={{ color: 'var(--muted)' }}>Manage partner discounts for Savage Pass holders.</p>
+          <h1 className="heading" style={{ fontSize: '2rem', color: 'var(--accent)' }}>Beneficios y Descuentos</h1>
+          <p style={{ color: 'var(--muted)' }}>Administra los descuentos de socios para los titulares de Savage Pass.</p>
         </div>
         <Link href="/admin/perks/new" className="btn-primary">
           <Plus size={20} />
-          New Perk
+          Nuevo Beneficio
         </Link>
       </header>
 
@@ -66,7 +66,7 @@ export default function AdminPerks() {
           <Search size={20} style={{ position: 'absolute', left: '12px', color: 'var(--muted)' }} />
           <input
             type="text"
-            placeholder="Search by partner name or category..."
+            placeholder="Buscar por nombre de socio o categoría..."
             className="input-field"
             style={{ paddingLeft: '40px' }}
             value={searchTerm}
@@ -76,11 +76,11 @@ export default function AdminPerks() {
       </div>
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>Loading perks...</div>
+        <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>Cargando beneficios...</div>
       ) : filteredPerks.length === 0 ? (
         <div className="glass-dark" style={{ textAlign: 'center', padding: '3rem', borderRadius: '12px' }}>
           <Tag size={48} style={{ color: 'var(--muted)', marginBottom: '1rem' }} />
-          <p style={{ color: 'var(--muted)' }}>No perks found. Add your first partner discount!</p>
+          <p style={{ color: 'var(--muted)' }}>No se encontraron beneficios. ¡Agrega tu primer descuento de socio!</p>
         </div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1rem' }}>
@@ -175,7 +175,7 @@ export default function AdminPerks() {
                   style={{ padding: '6px 12px', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}
                 >
                   <Pencil size={14} />
-                  Edit
+                  Editar
                 </Link>
                 <button
                   onClick={() => deletePerk(perk.id, perk.partner_name)}
@@ -193,7 +193,7 @@ export default function AdminPerks() {
                   }}
                 >
                   <Trash2 size={14} />
-                  Delete
+                  Eliminar
                 </button>
               </div>
             </div>

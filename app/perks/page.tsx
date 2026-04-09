@@ -72,13 +72,15 @@ export default function PerksPage() {
         zIndex: 10, position: 'relative',
         maxWidth: '1200px', margin: '0 auto', width: '100%'
       }}>
-        <Image src="/logo.png" alt="Savage Strength" width={160} height={45} style={{ objectFit: 'contain', clipPath: 'inset(0 2px 2px 0)' }} />
-        <Link href="/" style={{
+        <Link href="/lookup" style={{ display: 'flex', alignItems: 'center' }}>
+          <Image src="/logo.png" alt="Savage Strength" width={160} height={45} style={{ objectFit: 'contain', clipPath: 'inset(0 2px 2px 0)' }} />
+        </Link>
+        <Link href="/lookup" style={{
           display: 'flex', alignItems: 'center', gap: '6px',
           color: 'var(--muted)', fontSize: '0.85rem', fontWeight: 600,
         }}>
           <ArrowLeft size={16} />
-          Back
+          Volver
         </Link>
       </nav>
 
@@ -97,20 +99,20 @@ export default function PerksPage() {
             textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--accent)'
           }}>
             <Tag size={14} />
-            Exclusive Member Perks
+            Beneficios Exclusivos para Miembros
           </div>
 
           <h1 className="heading" style={{
             fontSize: 'clamp(2.5rem, 7vw, 4rem)', lineHeight: 0.95, marginBottom: '1rem'
           }}>
-            Your Pass. <span style={{ color: 'var(--accent)' }}>More Rewards.</span>
+            Tu Pase. <span style={{ color: 'var(--accent)' }}>Más Recompensas.</span>
           </h1>
 
           <p style={{
             color: 'var(--muted)', fontSize: '1.05rem', lineHeight: 1.6,
             maxWidth: '550px', margin: '0 auto'
           }}>
-            Show your active Savage Strength Pass at any of our partner locations to unlock exclusive discounts and perks.
+            Muestra tu Savage Strength Pass activo en cualquiera de nuestras ubicaciones asociadas para desbloquear descuentos y beneficios exclusivos.
           </p>
         </motion.div>
       </header>
@@ -126,9 +128,9 @@ export default function PerksPage() {
           }}
         >
           {[
-            { value: `${perks.length}`, label: 'Partners' },
-            { value: `Up to ${Math.max(...perks.map(p => parseInt(p.discount) || 0))}%`, label: 'Savings' },
-            { value: 'Always', label: 'Available' },
+            { value: `${perks.length}`, label: 'Socios' },
+            { value: `Hasta ${Math.max(...perks.map(p => parseInt(p.discount) || 0))}%`, label: 'Ahorro' },
+            { value: 'Siempre', label: 'Disponible' },
           ].map((stat, i) => (
             <div key={i} style={{ textAlign: 'center', padding: '1rem 1.5rem' }}>
               <span style={{
@@ -150,11 +152,11 @@ export default function PerksPage() {
         position: 'relative', zIndex: 1
       }}>
         {loading ? (
-          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>Loading perks...</div>
+          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>Cargando beneficios...</div>
         ) : perks.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
             <Store size={48} style={{ marginBottom: '1rem', opacity: 0.4 }} />
-            <p>Partner perks coming soon!</p>
+            <p>¡Pronto tendremos beneficios de socios!</p>
           </div>
         ) : (
           <div style={{
@@ -262,13 +264,13 @@ export default function PerksPage() {
       }}>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
           <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
-            Want to become a partner? Contact us to offer exclusive deals to our members.
+            ¿Quieres ser socio? Contáctanos para ofrecer ofertas exclusivas a nuestros miembros.
           </p>
           <p style={{
             color: 'var(--muted)', fontSize: '0.7rem', opacity: 0.5,
             textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700
           }}>
-            © 2024 SAVAGE STRENGTH. ALL RIGHTS RESERVED.
+            © 2024 SAVAGE STRENGTH. TODOS LOS DERECHOS RESERVADOS.
           </p>
         </motion.div>
       </section>

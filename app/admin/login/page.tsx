@@ -28,7 +28,7 @@ export default function AdminLogin() {
       router.push('/admin');
       router.refresh();
     } else {
-      setError('Invalid password. Access denied.');
+      setError('Contraseña inválida. Acceso denegado.');
     }
     setLoading(false);
   }
@@ -75,10 +75,10 @@ export default function AdminLogin() {
             <Image src="/logo.png" alt="Savage Strength" width={200} height={56} style={{ objectFit: 'contain', clipPath: 'inset(0 2px 2px 0)' }} priority />
           </div>
           <h1 className="heading" style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>
-            Admin Access
+            Acceso Administrativo
           </h1>
           <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>
-            Enter your password to access the dashboard.
+            Ingresa tu contraseña para acceder al panel.
           </p>
         </div>
 
@@ -102,14 +102,14 @@ export default function AdminLogin() {
               textTransform: 'uppercase',
               letterSpacing: '0.05em'
             }}>
-              Password
+              Contraseña
             </label>
             <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
               <Lock size={18} style={{ position: 'absolute', left: '14px', color: 'var(--muted)' }} />
               <input
                 required
                 type={showPassword ? 'text' : 'password'}
-                placeholder="Enter admin password"
+                placeholder="Ingresa la contraseña de administrador"
                 className="input-field"
                 style={{ paddingLeft: '44px', paddingRight: '44px', height: '50px' }}
                 value={password}
@@ -164,7 +164,7 @@ export default function AdminLogin() {
             style={{ width: '100%', height: '50px', fontSize: '1rem' }}
           >
             <Lock size={18} />
-            {loading ? 'Authenticating...' : 'Access Dashboard'}
+            {loading ? 'Autenticando...' : 'Acceder al Panel'}
           </button>
         </form>
 
@@ -175,7 +175,7 @@ export default function AdminLogin() {
           fontSize: '0.75rem',
           opacity: 0.6
         }}>
-          SAVAGE STRENGTH · ADMIN PORTAL
+          SAVAGE STRENGTH · PORTAL DE ADMINISTRACIÓN
         </p>
       </motion.div>
     </div>

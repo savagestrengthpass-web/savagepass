@@ -57,7 +57,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               }}
             >
               <Users size={14} />
-              Members
+              Miembros
             </Link>
             <Link
               href="/admin/perks"
@@ -75,10 +75,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               }}
             >
               <Tag size={14} />
-              Perks
+              Beneficios
             </Link>
             <Link
-              href="/"
+              href="/lookup"
               style={{
                 padding: '6px 14px',
                 borderRadius: '6px',
@@ -92,7 +92,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               }}
             >
               <Home size={14} />
-              View Site
+              Ver Sitio
             </Link>
           </nav>
         </div>
@@ -115,7 +115,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           }}
         >
           <LogOut size={14} />
-          Logout
+          Cerrar Sesión
         </button>
       </header>
 

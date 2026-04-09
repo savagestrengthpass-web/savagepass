@@ -36,7 +36,7 @@ export default function EditMember() {
 
     if (error) {
       console.error('Error fetching member:', error);
-      alert('Member not found.');
+      alert('Miembro no encontrado.');
       router.push('/admin');
     } else {
       setFormData(data);
@@ -62,7 +62,7 @@ export default function EditMember() {
 
     if (error) {
       console.error('Error updating member:', error);
-      alert('Error updating member.');
+      alert('Error al actualizar el miembro.');
     } else {
       router.push('/admin');
       router.refresh();
@@ -71,7 +71,7 @@ export default function EditMember() {
   }
 
   async function deleteMember() {
-    if (!confirm('Are you sure you want to delete this member? This action cannot be undone.')) return;
+    if (!confirm('¿Estás seguro de que quieres eliminar a este miembro? Esta acción no se puede deshacer.')) return;
     
     setSaving(true);
     const { error } = await supabase
@@ -81,7 +81,7 @@ export default function EditMember() {
 
     if (error) {
       console.error('Error deleting member:', error);
-      alert('Error deleting member.');
+      alert('Error al eliminar el miembro.');
     } else {
       router.push('/admin');
       router.refresh();
@@ -89,27 +89,27 @@ export default function EditMember() {
     setSaving(false);
   }
 
-  if (loading) return <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--muted)' }}>Loading...</div>;
+  if (loading) return <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--muted)' }}>Cargando...</div>;
 
   return (
     <div className="admin-container" style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
       <header style={{ marginBottom: '2rem' }}>
         <Link href="/admin" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--muted)', marginBottom: '1rem' }}>
           <ArrowLeft size={16} />
-          Back to Dashboard
+          Volver al Panel
         </Link>
-        <h1 className="heading" style={{ fontSize: '2rem' }}>Edit Member</h1>
+        <h1 className="heading" style={{ fontSize: '2rem' }}>Editar Miembro</h1>
       </header>
 
       <form onSubmit={handleSubmit} className="glass-dark" style={{ padding: '2rem', borderRadius: '8px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Full Name</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Nombre Completo</label>
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <User size={18} style={{ position: 'absolute', left: '12px', color: 'var(--muted)' }} />
             <input 
               required
               type="text" 
-              placeholder="e.g. John Doe"
+              placeholder="ej. Juan Pérez"
               className="input-field" 
               style={{ paddingLeft: '40px' }}
               value={formData.member_name}
@@ -119,12 +119,12 @@ export default function EditMember() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Email Address</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Correo Electrónico</label>
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <span style={{ position: 'absolute', left: '12px', color: 'var(--muted)', fontWeight: 800 }}>@</span>
             <input 
               type="email" 
-              placeholder="e.g. john@example.com"
+              placeholder="ej. juan@ejemplo.com"
               className="input-field" 
               style={{ paddingLeft: '40px' }}
               value={formData.member_email || ''}
@@ -134,12 +134,12 @@ export default function EditMember() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Phone Number</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Número de Teléfono</label>
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <span style={{ position: 'absolute', left: '12px', color: 'var(--muted)', fontWeight: 800 }}>#</span>
             <input 
               type="tel" 
-              placeholder="e.g. +1 234 567 890"
+              placeholder="ej. +52 55 1234 5678"
               className="input-field" 
               style={{ paddingLeft: '40px' }}
               value={formData.member_phone || ''}
@@ -149,13 +149,13 @@ export default function EditMember() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Gym Member ID</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>ID de Miembro del Gimnasio</label>
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <Hash size={18} style={{ position: 'absolute', left: '12px', color: 'var(--muted)' }} />
             <input 
               required
               type="text" 
-              placeholder="e.g. SS-2024-001"
+              placeholder="ej. SS-2024-001"
               className="input-field" 
               style={{ paddingLeft: '40px' }}
               value={formData.member_id || ''}
@@ -165,7 +165,7 @@ export default function EditMember() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Date Joined</label>
+          <label style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase' }}>Fecha de Unión</label>
           <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
             <Calendar size={18} style={{ position: 'absolute', left: '12px', color: 'var(--muted)' }} />
             <input 
@@ -181,8 +181,8 @@ export default function EditMember() {
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '4px' }}>
           <div>
-            <span style={{ fontWeight: 700, display: 'block' }}>Active Membership</span>
-            <span style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>Toggle to enable or disable the pass.</span>
+            <span style={{ fontWeight: 700, display: 'block' }}>Membresía Activa</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>Activa o desactiva el pase.</span>
           </div>
           <button 
             type="button"
@@ -201,7 +201,7 @@ export default function EditMember() {
             style={{ flex: 1, height: '50px' }}
           >
             <Save size={20} />
-            {saving ? 'Saving...' : 'Save Changes'}
+            {saving ? 'Guardando...' : 'Guardar Cambios'}
           </button>
           <button 
             type="button" 
